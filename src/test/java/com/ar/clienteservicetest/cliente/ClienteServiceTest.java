@@ -28,9 +28,9 @@ public class ClienteServiceTest {
 			new RestTemplate().exchange(request, String.class);
 			Assert.fail();
 		} catch (HttpClientErrorException exception) {
+			String mensagemEsperada = "{\"message\":\"CPF com situacao irregular.\"}";
+			assertEquals(mensagemEsperada, exception.getResponseBodyAsString());
 			assertEquals(HttpStatus.BAD_REQUEST.value(), exception.getRawStatusCode());
-			assertEquals("{\"message\":\"CPF com situacao irregular.\"}", exception.getResponseBodyAsString());
 		}
 	}
-
 }
