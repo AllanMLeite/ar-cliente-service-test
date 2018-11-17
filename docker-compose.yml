@@ -1,0 +1,15 @@
+version: "2"
+services:      
+  ar-cliente-service:
+    build: ./ar-cliente-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - ar-validador-comum-service
+    network_mode: host
+     
+  ar-validador-comum-service:
+    build: ./ar-validador-comum-service
+    ports:
+      - "8082:8082"
+                  
